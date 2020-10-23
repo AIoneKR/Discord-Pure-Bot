@@ -9,7 +9,7 @@ module.exports = {
     description: "학교 급식을 불러옵니다.",
 	usage: "<초•중•고 학교 이름>",
     run: async (client, message, args) => {
-	if (!args) {
+	if (!args[0]) {
 	return message.channel.send('학교 이름을 입력해주세요!');
 	}
 	try {
