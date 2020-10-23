@@ -24,7 +24,7 @@ module.exports = {
 	} else {
         let error1embed = new Discord.MessageEmbed()
         error1embed.setTitle("ERROR!")
-        error1embed.addField(`**ERROR**`, `**ID가 올바르지 않거나 찾을수 없는 봇이에요!\n혹시 사람인가요? 사람은 초대링크를 생성할수없어요!**`)
+        error1embed.addField(`**ERROR**`, `**ID가 올바르지 않거나 찾을수 없는 봇입니다!\n혹시 인간입니까?\n인간은 초대링크를 생성할수없습니다!**`)
         error1embed.setColor("#ff4c39")
         message.react('692644452401020958')
         return message.reply(error1embed)
