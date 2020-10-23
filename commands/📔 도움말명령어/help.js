@@ -44,21 +44,7 @@ function getAll(client, message) {
 	setTimeout(() => {
 	message.react('🇲')
 	}, 1000)
-	const embed1 = new MessageEmbed()
-	embed1.setTitle("https://top.gg/bot/677381291666178058")
-	embed1.setDescription("[[Vote]](https://top.gg/bot/677381291666178058/vote) <- Vote를 눌러주세요!")
-	embed1.setColor("#59e7ff")
-	embed1.setImage("https://cdn.discordapp.com/attachments/702037377945698356/711571256855494666/unknown.png")
-	const embed2 = new MessageEmbed()
-	embed2.setTitle("https://koreanbots.cf/bots/677381291666178058")
-	embed2.setDescription("[♥♥♥](https://koreanbots.cf/bots/677381291666178058) <- :hearts:를 눌러주세요!")
-	embed2.setColor("#59e7ff")
-	embed2.setImage("https://cdn.discordapp.com/attachments/702037377945698356/711570998738026506/unknown.png")
-	embed2.setTimestamp()
-	embed2.setFooter(message.author.tag, message.author.displayAvatarURL())
 	setTimeout(() => { message.author.send(embed); }, 2000)
-	setTimeout(() => { message.author.send(embed1); }, 2500)
-	setTimeout(() => { message.author.send(embed2); }, 3000)
 	return;
 }
 
