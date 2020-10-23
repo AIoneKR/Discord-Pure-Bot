@@ -24,8 +24,6 @@ const client = new Client({
     disableEveryone: true
 });
 
-const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzM4MTI5MTY2NjE3ODA1OCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTg4NTU3NzQwfQ.bL8QfinS-8iRFmV2RNFmo8rn4zB22TC-o8uAFF4-u8c', client);
-
 setInterval(() => {
     dbl.postStats(client.guilds.cache.size);
 }, 1800000);
@@ -39,16 +37,6 @@ console.log(`[ DBL ] Server Error : ${e}`);
 })
 
 client.on("ready", async ready => {
-let token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzM4MTI5MTY2NjE3ODA1OCIsImlhdCI6MTU4ODYwMTI2MCwiZXhwIjoxNjIwMTU4ODYwfQ.HqB1OWLNamYk9yq4wuXi4hpoZIipbQTsG-twqR4gbY6dgA0Zsp_7oDkKrs9oGjMwyy-3rY_OHIiqrNKiTBdF4Kln1UvovQrj-Ogdo5kM1ZDuTwVSqtFTvXGhH7kZ3HFNysy3E0FEdRiBXkHuexUNo7fQv6mOJstd5kUChq4s43s"
-
-
-res = await fetch("https://api.koreanbots.dev/bots/servers", {
-    method: "POST",
-    headers: { token, "Content-type": "application/json" },
-    body: `{ "servers": "${client.guilds.cache.size}" }`
-}).then(res => res.json())
-console.log(res)
-});
 
 client.commands = new Collection();
 client.aliases = new Collection();
