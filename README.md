@@ -19,5 +19,6 @@ TOKEN=(토큰)
 botname=(봇이름)
 v= v(버전)
 prefix=(접두사)
-dvr=(개발자ID)```
+dvr=(개발자ID)
+```
 ****
