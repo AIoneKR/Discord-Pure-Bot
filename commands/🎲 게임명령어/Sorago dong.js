@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "소라고동",
@@ -16,6 +15,6 @@ module.exports = {
     let emojil = client.emojis.cache.get("691681971478462495")//로딩바
 	message.channel.send("질문에 답변을 찾는중..." + `${emojil}`).then(message => {message.delete({ timeout: 1000, reason: 'delete' })})
      setTimeout(function(){ message.channel.send(nember2); }, 2000)
-     console.log(`> ${message.guild.name} < ${message.author.tag} /소라고동 사용`)
+     console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /소라고동 사용`)
     }
 }

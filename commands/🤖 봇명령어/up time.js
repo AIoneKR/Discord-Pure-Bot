@@ -19,6 +19,6 @@ module.exports = {
          .setTimestamp()
          .setFooter(process.env.botname + ` ${process.env.v}`, client.user.displayAvatarURL())
          message.channel.send({embed})
-             console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /업타임 사용 > ${uptime}`)
+             console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /업타임 사용 > ${duration}`)
     }
 }

@@ -30,7 +30,7 @@ module.exports = {
         embed01.setColor("#44ff7a")
         user.send(embed01)
         message.channel.send(embed)
-        console.log(`> ${message.guild.name} < ${message.author.tag} > ${user.tag} (${message.author.id}) /문상성공 사용`)
+        console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /문상성공 사용`)
 		} else {
 		return;
 		}

@@ -67,7 +67,7 @@ module.exports = {
 	
 	let blacklist = blacklists[user.id].blacklists;
 	let reason = blacklists[user.id].reasons;
-	let prefix = prefixes[message.author.id].prefixes;
+	let prefix = prefixes[user.id].prefixes;
 	
           if (user.bot === false) {
             botii = "봇이 아닙니다 " + `${e0}`;
@@ -76,7 +76,8 @@ module.exports = {
           }
           
           if (user.presence.status === "offline") {
-            dd = `${offline}` + "오프라인";
+            dd = "현제 기능이 작동하지 않습니다.";
+		  //dd = `${offline}` + "오프라인";
           } else if (user.presence.status === "online") {
             dd = `${online}` + "온라인";
           } else if (user.presence.status === "dnd") {
@@ -100,10 +101,11 @@ module.exports = {
      .addField(`${emojil4}` + ` User tag`, `${user.toString() || '확인 불가'}`, true)
      .addField(`${emojil5}` + ` ID`, `${user.id || '확인 불가'}`, true)
      .addField(`${emojil8}` + ` 상태`, `${dd || '확인 불가'}`, true)
-	 .addField(`${emojil6}` + ` 프리미엄`, `${premium1 || '확인 불가'}`, true)
-	 .addField(`${emojil4}` + ` 접두사`, `${prefix || '확인 불가'}`, true)
-	 .addField(`${emojil5}` + ` 블랙리스트 여부`, `${blacklist11 || '확인 불가'}`)
-     .addField(`${emojil6}` + ` 상태 표시줄`, `${user.presence.game ? user.presence.game.name : '게임중이 아닙니다.'}`)
+	.addField(`${emojil6}` + ` 프리미엄`, `${premium1 || '확인 불가'}`, true)
+	.addField(`${emojil4}` + ` 접두사`, `${prefix || '확인 불가'}`, true)
+	.addField(`${emojil5}` + ` 블랙리스트 여부`, `${blacklist11 || '확인 불가'}`)
+	.addField(`${emojil6}` + ` 상태 표시줄`, `확인 불가`)
+     //.addField(`${emojil6}` + ` 상태 표시줄`, `${user.presence.activities || '게임중이 아닙니다.'}`)
      .addField(`${emojil7}` + ` 디스코드 계정 생성일`, `${moment(user.createdAt).format('LLLL') || '확인 불가'}`)
      .addField(`${emojil3}` + ` 봇여부`, `${botii || '확인 불가'}`, true)
      .addField(`${emojil6}` + ` 역할`, `${member.roles.cache.filter(n => n.id !== message.guild.id).map(n => n).join(', ') || '역할이 없습니다.'}`)

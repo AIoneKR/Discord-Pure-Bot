@@ -14,6 +14,6 @@ module.exports = {
     let emojil = client.emojis.cache.get("691681971478462495")//로딩바
 	message.channel.send("주사위 굴리는중 " + `${emojil}`).then(message => {message.delete({ timeout: 1000, reason: 'delete' })})
      setTimeout(function(){ message.channel.send(nember2); }, 2000)
-     console.log(`> ${message.guild.name} < ${message.author.tag} /주사위 사용`)
+     console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /주사위 사용`)
     }
 }

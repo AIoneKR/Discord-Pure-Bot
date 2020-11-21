@@ -9,7 +9,7 @@ module.exports = {
     description: "마인크래프트 유저를 검색합니다.",
 	usage: "<검색할 유저 이름>",
     run: async (client, message, args) => {
-	if (!args[0]) {
+	if (!args) {
 	return message.channel.send('유저의 이름을 입력해주세요!');
 	}
 	try {

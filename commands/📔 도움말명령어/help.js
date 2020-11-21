@@ -30,21 +30,50 @@ function getAll(client, message) {
     const commands = (category) => {
         return client.commands
             .filter(cmd => cmd.category === category)
-            .map(cmd => `\`${cmd.name}\` - ${cmd.description}`)
-            .join("\n");
+            .map(cmd => `\`${cmd.name}\``)
+            .join(", ");
     }
+	
+	let filter = (reaction, user) => (reaction.emoji.name === '❌') && user.id === message.author.id
 
     const info = client.categories
         .map(cat => stripIndents`**${cat[0].toUpperCase() + cat.slice(1)}** \n${commands(cat)}`)
         .reduce((string, category) => string + "\n\n" + `${category}`);
 	console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /명령어 사용`)
 	embed.setTitle("Pure 도움말")
-	embed.setDescription("명령어 자세히 보기 : `" + prefix + "도움말 [도움말 이름]`" + "\n\n" + info)
-	message.react('🇩')
+	embed.setDescription("명령어 자세히 보기 : `" + prefix + "도움말 [도움말 이름]`" + "\n\n" + info + "\n\n" + "```❌를 누르면 해당 메시지가 삭제됩니다.```")
+	embed.setFooter(message.author.tag, message.author.displayAvatarURL())
+	message.react('🇴')
 	setTimeout(() => {
-	message.react('🇲')
+	message.react('🇰')
 	}, 1000)
-	setTimeout(() => { message.author.send(embed); }, 2000)
+	/*const embed1 = new MessageEmbed()
+	embed1.setTitle("https://top.gg/bot/677381291666178058")
+	embed1.setDescription("[[Vote]](https://top.gg/bot/677381291666178058/vote) <- Vote를 눌러주세요!")
+	embed1.setColor("#59e7ff")
+	embed1.setImage("https://cdn.discordapp.com/attachments/702037377945698356/711571256855494666/unknown.png")
+	const embed2 = new MessageEmbed()
+	embed2.setTitle("https://koreanbots.cf/bots/677381291666178058")
+	embed2.setDescription("[♥♥♥](https://koreanbots.cf/bots/677381291666178058) <- :hearts:를 눌러주세요!")
+	embed2.setColor("#59e7ff")
+	embed2.setImage("https://cdn.discordapp.com/attachments/702037377945698356/711570998738026506/unknown.png")
+	embed2.setTimestamp()
+	embed2.setFooter(message.author.tag, message.author.displayAvatarURL())*/
+			setTimeout(() => {
+			message.channel.send(embed).then((th) => {
+		  th.react('❌')
+		  th.awaitReactions(filter, {
+			max: 1
+		  }).then((collected) => {
+			if (collected.array()[0].emoji.name === '❌') {
+			th.delete()
+			message.delete()
+			}
+		  })
+		})
+		}, 2000)
+	/*setTimeout(() => { message.channel.send(embed1); }, 2500)
+	setTimeout(() => { message.channel.send(embed2); }, 3000)*/
 	return;
 }
 

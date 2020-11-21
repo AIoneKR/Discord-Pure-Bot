@@ -32,7 +32,7 @@ module.exports = {
                   let gc
                g.channels.cache.forEach(c => {
                     let cname = `${c.name}`
-                    if (cname.includes('📌│Pure-공지사항') || cname.includes('봇공지') || cname.includes('봇-공지')) {
+                    if (cname.includes('📌│pure-공지사항') || cname.includes('pure-공지') || cname.includes('봇공지') || cname.includes('봇-공지')) {
                       if (!cname.includes('경고')) {
                         gc = `${c.id}`
                       }
@@ -40,7 +40,7 @@ module.exports = {
                   })
                   let ann = new Discord.MessageEmbed()
                     .setTitle(args1[0])
-                    .setDescription(`${reason}\n\n**===========================\n\n이 메시지는 키워드(📌│Pure-공지사항, 봇공지, 봇-공지)가 포함된 채널에 발신되었습니다.\n\n[서포트서버 들어가기](https://discord.gg/n2KUDk7)\n[이용약관 보러가기](https://github.com/AIoneKR/Team-Leo-Discord-Bot/blob/master/Team%20Leo%20Tos.md)\n\n===========================**`)
+                    .setDescription(`${reason}\n\n**===========================\n\n이 메시지는 키워드(📌│pure-공지사항, pure-공지, 봇공지, 봇-공지)가 포함된 채널에 발신되었습니다.\n\n[서포트서버 들어가기](https://discord.gg/n2KUDk7)\n[이용약관 보러가기](https://github.com/AIoneKR/Team-Leo-Discord-Bot/blob/master/Team%20Leo%20Tos.md)\n\n===========================**`)
                     .setColor("#FFFFFC")
                     .setFooter(`공지 발신자 : ${message.member.user.tag}`, message.author.avatarURL())
                     .setTimestamp()
@@ -55,7 +55,7 @@ module.exports = {
                     ment = `${g.name} : 발신 실패 (채널 생성 권한 없음)\n\n`
                     } else {
                     ment = `${g.name} : 채널 자동 생성 및 발신 성공\n\n`
-                    g.channels.create(`📌│Pure-공지사항`).then(channel => {
+                    g.channels.create(`📌│pure-공지사항`).then(channel => {
                       channel.send(ann)
 					  channel.updateOverwrite(channel.guild.roles.everyone, { VIEW_CHANNEL: true, SEND_MESSAGES: false });
                     })
