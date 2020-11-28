@@ -1,16 +1,11 @@
 const Discord = require("discord.js");
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "봇초대",
     category: "🤖 봇명령어",
     description: "봇초대를 할수있는 링크를 줍니다.",
     run: async (client, message, args) => {
-        
         message.react('692644452220534857')
-        let emojil = client.emojis.cache.get("691681971478462495")//로딩바
-    
         const embed = new Discord.MessageEmbed()
      .setColor(0x0074AE)
      .setTitle(`봇초대 링크를 가져왔습니다!`)

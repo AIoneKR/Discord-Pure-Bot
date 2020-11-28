@@ -1,17 +1,14 @@
 const Discord = require("discord.js");
 
 module.exports = {
-    name: "say",
+    name: "ip",
     category: "🔐 개발자명령어",
     description: "봇으로 말을 할수있습니다.",
-	usage: "<할말>",
-    run: async (client, message) => {
+	usage: "<>",
+    run: async (client, message, args) => {
         if (message.author.id == process.env.dvr) {
-        let args = message.content.split(" ").slice(1);
-        message.delete()
-        var saytext = args.join(" ");
-        message.channel.send(saytext)
-        console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /say 사용 > ${saytext}`)
+        
+        console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /ip 사용`)
 			} else {
 		message.react('692644452401020958')
 		let embed = new Discord.MessageEmbed()

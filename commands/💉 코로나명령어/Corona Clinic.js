@@ -1,17 +1,11 @@
 const Discord = require("discord.js");
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "진료소",
     category: "💉 코로나명령어",
     description: "진료소를 알려줍니다.",
     run: async (client, message, args) => {
-        
         message.react('692644452220534857')
-        let emojil = client.emojis.cache.get("691681971478462495")//로딩바
-        
-    
         const embed = new Discord.MessageEmbed()
      .setColor(0x0023AE)
      .setAuthor(`COVID-19(코로나) 진료소`)

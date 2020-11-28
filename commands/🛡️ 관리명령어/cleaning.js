@@ -1,6 +1,4 @@
 const Discord = require("discord.js");
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "청소",
@@ -9,7 +7,6 @@ module.exports = {
 	usage: "<숫자>",
     run: async (client, message) => {
     try {
-    let emojil = client.emojis.cache.get("691681971478462495")//로딩바
     if(message.member.permissions.has("MANAGE_MESSAGES")){
     let args = message.content.split(" ").slice(1);
     var wow = parseFloat(args[0]);

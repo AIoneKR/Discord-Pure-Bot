@@ -1,6 +1,4 @@
 const Discord = require("discord.js");
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "공지",

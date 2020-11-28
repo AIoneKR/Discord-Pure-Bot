@@ -15,6 +15,7 @@ const premiums = require("./Database/premiums.json");
 const blacklists = require("./Database/blacklist.json");
 const coins = require("./Database/coins.json");
 const protects = require("./Database/protects.json");
+const joins = require("./Database/joins.json");
 
 const active = new Map()
 
@@ -23,6 +24,8 @@ const DBL = require("dblapi.js");
 const client = new Client({
     disableEveryone: true
 });
+
+const dbl = new DBL("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzM4MTI5MTY2NjE3ODA1OCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjA0MTA4MTIxfQ.Ps1yIRxsS5-VKTJ5OtEmWu3VKi5TAMkhqOQR-cly_Q0", client);
 
 setInterval(() => {
     dbl.postStats(client.guilds.cache.size);
@@ -37,6 +40,16 @@ console.log(`[ DBL ] Server Error : ${e}`);
 })
 
 client.on("ready", async ready => {
+let token = process.env.kbottoken
+
+
+res = await fetch("https://api.koreanbots.dev/bots/servers", {
+    method: "POST",
+    headers: { token, "Content-type": "application/json" },
+    body: `{ "servers": "${client.guilds.cache.size}" }`
+}).then(res => res.json())
+console.log(res)
+});
 
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -97,14 +110,22 @@ client.on("message", async message => {
 		verifieds: "falses"
 	};
 }
+    if(!joins[message.author.id]){
+        joins[message.author.id] = {
+            joins: "정보 없음"
+        };
+    }
 let verified = verifieds[message.author.id].verifieds;
+
+let join = joins[message.author.id].joins;
 
 if(!prefixes[message.author.id]){
         prefixes[message.author.id] = {
             prefixes: process.env.prefix
         };
     }
-const prefix = prefixes[message.author.id].prefixes;
+  const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
+  const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : prefixes[message.author.id].prefixes;
 
 if(!blacklists[message.author.id]){
 	blacklists[message.author.id] = {
@@ -194,8 +215,18 @@ const embed = new Discord.MessageEmbed()
 	verifieds[message.author.id] = {
 		verifieds: "trues"
 	};
+	
+	let time = moment().format('LLLL')
+	
+	joins[message.author.id] = {
+	  joins: `${time}`
+	};
+
 
 	fs.writeFile("./Database/verified.json", JSON.stringify(verifieds), (err) => {
+		if (err) console.log(err)
+	})
+	fs.writeFile("./Database/joins.json", JSON.stringify(joins), (err) => {
 		if (err) console.log(err)
 	})
 			} else {
@@ -291,7 +322,14 @@ if (message.content === prefix + "탈퇴") {
 		verifieds: "falses"
 	};
 	
+		joins[message.author.id] = {
+		joins: "정보 없음"
+	};
+	
 	fs.writeFile("./Database/verified.json", JSON.stringify(verifieds), (err) => {
+		if (err) console.log(err)
+	})
+	fs.writeFile("./Database/joins.json", JSON.stringify(joins), (err) => {
 		if (err) console.log(err)
 	})
 
@@ -330,7 +368,7 @@ if (message.content === prefix + "탈퇴") {
 		const cooldown1 = used1.get(message.author.id);
 		if (cooldown1) {
 			const remaining = Duration(cooldown1 - Date.now(), { units: ['m', 's'], round: true});
-			return message.reply("`" + remaining + "`" + "후에 다시해주세요.").catch((err) => message.reply(`${err}`));
+			return message.reply("`" + remaining + "`" + "후에 다시해주세요.").then(message => {message.delete({ timeout: 3000, reason: 'delete' })}).catch((err) => message.reply(`${err}`));
 		} else {
 			used1.set(message.author.id, Date.now() + 3000);
 				setTimeout(() => {
@@ -342,7 +380,7 @@ if (message.content === prefix + "탈퇴") {
 		const cooldown = used.get(message.author.id);
 		if (cooldown) {
 			const remaining = Duration(cooldown - Date.now(), { units: ['m', 's'], round: true});
-			return message.reply("`" + remaining + "`" + "후에 다시해주세요.").catch((err) => message.reply(`${err}`));
+			return message.reply("`" + remaining + "`" + "후에 다시해주세요.").then(message => {message.delete({ timeout: 3000, reason: 'delete' })}).catch((err) => message.reply(`${err}`));
 		} else {
 			used.set(message.author.id, Date.now() + 60000);
 				setTimeout(() => {

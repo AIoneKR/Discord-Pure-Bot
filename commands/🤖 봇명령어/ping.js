@@ -1,9 +1,8 @@
 const Discord = require("discord.js");
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "핑",
+    aliases: ["ping"],
     category: "🤖 봇명령어",
     description: "봇의 핑을 알려줍니다.",
     run: async (client, message, args) => {
@@ -20,13 +19,14 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
          .setColor(0x00AE15)
          .setTitle(`${emojil}` + ' 봇 PING')
-         .addField(`${emojil2}` + ' **Message Delay**',
+         .addField(`${emojil5}` + ' **Message Delay**',
          "__**" + `${Math.floor(msg.createdTimestamp - message.createdTimestamp)}` + "ms**__")
-         .addField(`${emojil5}` + ' **Ping API**',
+         .addField(`${emojil8}` + ' **Ping API**',
          "__**" + `${Math.round(client.ws.ping)}` + "ms**__")
          .setTimestamp()
          .setFooter(message.author.tag, message.author.displayAvatarURL())
-         msg.edit({embed})
+         msg.delete()
+	    message.channel.send(embed)
              console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /핑 사용`)
     }
 }

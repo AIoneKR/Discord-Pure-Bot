@@ -1,8 +1,6 @@
 const Discord = require("discord.js");
 const cheerio = require('cheerio');
 const request = require('request');
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "코로나현황",
@@ -40,7 +38,13 @@ module.exports = {
           const $inspectData = $data.find('.liveToggleOuter div .live_left .liveTest.main_box_toggle .info_core .suminfo').children();
           const inspectData = [];
           for (let i = 0; i < 3; i++) {
-            inspectData[i] = $inspectData.eq(i).find('li .num').text().replace(/[^.0-9]/g, '');
+            inspectData[i] = $inspectData.eq(i).find('li .num').text().replace(/[^0-9,]/g, '');
+          }
+
+          const $inspectData123 = $data.find('.liveToggleOuter div .live_left .liveTest.main_box_toggle .info_core .suminfo').children();
+          const inspectData123 = [];
+          for (let i = 0; i < 25; i++) {
+            inspectData123[i] = $inspectData123.eq(i).find('li .num').text().replace(/[^.0-9]/g, '');
           }
           
           const $NuuData = $data1.find('.m_newsarea .m_news .m_text_list').children();
@@ -82,9 +86,9 @@ module.exports = {
             embed98.addField(':adhesive_bandage: **치료 중(격리 중)**', `${numData[2]}명 (${beforeData[2]})`, true)
             embed98.addField(':syringe: **누적 검사수**', `${inspectData[0]}명`, true)
             embed98.addField(':ok: **누적 검사완료수**', `${inspectData[1]}명`, true)
-            embed98.addField(':test_tube: **검사중**', `${inspectData[0] - inspectData[1]}명 - ${inspectData3}%`, true)
+            embed98.addField(':test_tube: **검사중**', `${inspectData123[0] - inspectData123[1]}명 - ${inspectData3}%`, true)
             embed98.addField(':thermometer_face: **결과양성(확진)**', `${inspectData12}명 - ${inspectData2}%`, true)
-            embed98.addField(':white_check_mark: **결과음성**', `${inspectMinus}명 - ${inspectMinus2}%`, true)
+            embed98.addField(':white_check_mark: **결과음성(미확진)**', `${inspectMinus}명 - ${inspectMinus2}%`, true)
             embed98.addField(`${emojil}` + ' **누적 확진률**', `${inspectData[2]}%`, true)
             embed98.addField(':thinking: **핫이슈**', `• ${NuuData[2]}\n• ${NuuData[3]}\n[[자세히 보기]](http://ncov.mohw.go.kr/tcmBoardList.do?brdId=&brdGubun=&dataGubun=&ncvContSeq=&contSeq=&board_id=&gubun=)`)
             embed98.addField(':thumbsup: **코로나19 팩트체크**', `• ${NssData[0]}\n• ${NssData[1]}\n[[자세히 보기]](http://ncov.mohw.go.kr/factBoardList.do?brdId=3&brdGubun=33)`)

@@ -38,7 +38,6 @@ module.exports = {
 
 	embed.setColor("#FFFFFA")
 	embed.setTitle("접두사 설정 | set prefix")
-	embed.setDescription("**``" + "문의가 필요할땐\n%문의 (문의할 내용)" + "``**")
 	embed.addField("이전 설정", "``" + `${prefix}` + "``")
 	embed.addField("최근 설정", "``" + `${args[0]}` + "``")
 	message.channel.send({embed})

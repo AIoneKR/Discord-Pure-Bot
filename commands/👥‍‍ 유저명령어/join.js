@@ -1,5 +1,3 @@
-const Discord = require("discord.js");
-
 module.exports = {
     name: "가입",
     category: "👥‍‍ 유저명령어",

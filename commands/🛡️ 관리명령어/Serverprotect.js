@@ -12,7 +12,6 @@ if(!protects[message.guild.id]){
 		protects: "falses"
 	};
 }
-let protect = protects[message.guild.id].protects;
 if(message.member.permissions.has("ADMINISTRATOR")){
 const embed = new Discord.MessageEmbed()
 		let filter = (reaction, user) => (reaction.emoji.name === '🔒' || reaction.emoji.name === '🔓') && user.id === message.author.id

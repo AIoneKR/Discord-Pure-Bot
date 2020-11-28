@@ -1,6 +1,4 @@
 const Discord = require("discord.js");
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 const protects = require("../../Database/protects.json");
 
 module.exports = {
@@ -21,10 +19,10 @@ const protect = protects[gigi.id].protects;
      .setColor(0x00AE40)
      .setAuthor(`${gigi.name} 서버의 이미지를 불러왔습니다!`)
      .setTitle(`${message.author.tag}님이 요청하신 내용입니다!`)
-        .setImage(gigi.iconURL({ format: 'png', dynamic: true, size: 1024 }))
+        .setImage(gigi.iconURL({ size: 1024 }))
         .setTimestamp()
-        .setFooter("30초후 삭제됩니다.")
-        message.channel.send(embed).then(message => {message.delete({ timeout: 30000, reason: 'delete' })})
+        .setFooter(message.author.tag, message.author.displayAvatarURL())
+        message.channel.send(embed)
          console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /서버이미지 사용 > ${gigi.name}`)
     } else {
 		if (protect === "trues") {
@@ -33,10 +31,10 @@ const protect = protects[gigi.id].protects;
      embed2.setColor(0x00AE40)
      embed2.setAuthor(`${gigi.name} 서버의 이미지를 불러왔습니다!`)
      embed2.setTitle(`${message.author.tag}님이 요청하신 내용입니다!`)
-        embed2.setImage(gigi.iconURL({ format: 'png', dynamic: true, size: 1024 }))
+        embed2.setImage(gigi.iconURL({ size: 1024 }))
         embed2.setTimestamp()
-        embed2.setFooter("30초후 삭제됩니다.")
-        message.channel.send(embed2).then(message => {message.delete({ timeout: 30000, reason: 'delete' })})
+        embed2.setFooter(message.author.tag, message.author.displayAvatarURL())
+        message.channel.send(embed2)
          console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /서버이미지 사용 > ${gigi.name}`)
 		} else {
 	  let embed3 = new Discord.MessageEmbed()

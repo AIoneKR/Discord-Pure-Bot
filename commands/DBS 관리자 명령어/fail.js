@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const dev = [process.env.dvr, "690504046905393182"]
 
 module.exports = {
     name: "인증실패",

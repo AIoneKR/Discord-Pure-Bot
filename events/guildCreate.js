@@ -3,6 +3,14 @@ const fetch = require('node-fetch');
 const fs = require("fs");
 
 module.exports = async (client, guild, message) => {
+	let token = process.env.kbottoken
+	res = await fetch("https://api.koreanbots.dev/bots/servers", {
+    method: "POST",
+    headers: { token, "Content-type": "application/json" },
+    body: `{ "servers": "${client.guilds.cache.size}" }`
+	}).then(res => res.json())
+	console.log(res)
+
 console.log(`┌─────────new server!!─────────`)
 console.log(`│ 서버이름 : ${guild.name}`)
 console.log(`│ 서버소유자 : ${guild.owner.user.tag}`)

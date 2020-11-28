@@ -1,8 +1,6 @@
 const { MessageEmbed } = require("discord.js");
-const fs = require("fs");
 const coins = require("../../Database/coins.json");
 const moneys = require("../../Database/moneys.json");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "은행정보",

@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const fs = require("fs");
 const coins = require("../../Database/coins.json");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "돈제거",

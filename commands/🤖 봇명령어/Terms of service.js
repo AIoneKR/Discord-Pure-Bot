@@ -1,14 +1,10 @@
 const Discord = require("discord.js");
-const moment = require('moment');
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "이용약관",
     category: "🤖 봇명령어",
     description: "Pure 이용약관",
     run: async (client, message, args) => {
-        
         message.react('692644452220534857')
             const embed = new Discord.MessageEmbed()
          .setColor(0x0045AE)

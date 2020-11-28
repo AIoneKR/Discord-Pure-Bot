@@ -1,9 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const moneys = require("../../Database/moneys.json");
-const fetch = require('node-fetch');
-const koreanbots = require('koreanbots')
-const MyBot = new koreanbots.MyBot('eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzM4MTI5MTY2NjE3ODA1OCIsImlhdCI6MTU4ODYwMTI2MCwiZXhwIjoxNjIwMTU4ODYwfQ.HqB1OWLNamYk9yq4wuXi4hpoZIipbQTsG-twqR4gbY6dgA0Zsp_7oDkKrs9oGjMwyy-3rY_OHIiqrNKiTBdF4Kln1UvovQrj-Ogdo5kM1ZDuTwVSqtFTvXGhH7kZ3HFNysy3E0FEdRiBXkHuexUNo7fQv6mOJstd5kUChq4s43s')
 
 module.exports = {
     name: "도박",

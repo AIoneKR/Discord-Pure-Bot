@@ -1,8 +1,5 @@
 const Discord = require("discord.js");
 const moment = require('moment');
-const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
-const premiums = require("../../Database/premiums.json");
 const protects = require("../../Database/protects.json");
 
 module.exports = {
@@ -72,8 +69,8 @@ embed.setTitle(`${gigi.name}` + " 서버 정보"|| 'None')
             embed.setThumbnail(gigi.iconURL() || 'https://cdn.discordapp.com/attachments/702037377945698356/705585655174135859/Discord.png')
             embed.addField(`${emojil4}` + " **서버 이름**", `**${`${gigi.name}` || 'None'}**`, true)
         embed.addField(`${emojil4}` + " **서버 ID**", `**${gigi.id || 'None'}**`, true)
+        embed.addField(`${emojil6}` + " **서버 주인**", `**${gigi.owner.toString() || 'None'}**`)
 		embed.addField(`${emojil5}` + " **서버 보호 여부**", `**${protectuuu || 'None'}**`)
-			embed.addField(`${emojil6}` + " **서버 주인**", `**${gigi.owner.toString() || 'None'}**`)
             embed.addField(`${emojil2}` + " **서버 위치**", `**${gigi.region || 'None'}**`)
             embed.addField(`${emojil7}` + " **서버 생성일**", `**${moment(gigi.createdAt).format('LLLL') || 'None'}**`)
         embed.addField(`${emojil3}` + " **서버 인원 수 | 역할 갯수 | 채널 갯수**", `**${gigi.memberCount || 'None'}명 | ${gigi.roles.cache.size || 'None'}개 | ${gigi.channels.cache.size || 'None'}개**`)
@@ -84,9 +81,9 @@ embed.setTitle(`${gigi.name}` + " 서버 정보"|| 'None')
 			embed.addField(`${emojil2}` + " **서버 잠수채널**", `**${afk || 'None'}**`, true)
             embed.addField(`${emojil3}` + " **서버 잠수 시간**", `**${afktime}초**`, true)
         embed.addField(`${emojil5}` + " **서버 메세지 필터 옵션**", `**${f || 'None'}**`)
-            embed.setFooter("30초후 삭제됩니다.")
+            embed.setFooter(message.author.tag, message.author.displayAvatarURL())
             embed.setTimestamp();
-        message.channel.send(embed).then(message => {message.delete({ timeout: 30000, reason: 'delete' })})
+        message.channel.send(embed)
         console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /서버정보 사용 > ${gigi.name}`)
     } else {
 		if (protect === "trues") {
@@ -144,8 +141,8 @@ embed.setTitle(`${gigi.name}` + " 서버 정보"|| 'None')
             embed.setThumbnail(gigi.iconURL() || 'https://cdn.discordapp.com/attachments/702037377945698356/705585655174135859/Discord.png')
             embed.addField(`${emojil4}` + " **서버 이름**", `**${`${gigi.name}` || 'None'}**`, true)
         embed.addField(`${emojil4}` + " **서버 ID**", `**${gigi.id || 'None'}**`, true)
+        embed.addField(`${emojil6}` + " **서버 주인**", `**<@${client.guilds.cache.get(args[0]).ownerID || 'None'}>**`)
 		embed.addField(`${emojil5}` + " **서버 보호 여부**", `**${protectuuu || 'None'}**`)
-			embed.addField(`${emojil6}` + " **서버 주인**", `**<@${client.guilds.cache.get("428497879989092362").ownerID || 'None'}>**`)
             embed.addField(`${emojil2}` + " **서버 위치**", `**${gigi.region || 'None'}**`)
             embed.addField(`${emojil7}` + " **서버 생성일**", `**${moment(gigi.createdAt).format('LLLL') || 'None'}**`)
         embed.addField(`${emojil3}` + " **서버 인원 수 | 역할 갯수 | 채널 갯수**", `**${gigi.memberCount || 'None'}명 | ${gigi.roles.cache.size || 'None'}개 | ${gigi.channels.cache.size || 'None'}개**`)
@@ -156,9 +153,9 @@ embed.setTitle(`${gigi.name}` + " 서버 정보"|| 'None')
 			embed.addField(`${emojil2}` + " **서버 잠수채널**", `**${afk || 'None'}**`, true)
             embed.addField(`${emojil3}` + " **서버 잠수 시간**", `**${afktime}초**`, true)
         embed.addField(`${emojil5}` + " **서버 메세지 필터 옵션**", `**${f || 'None'}**`)
-            embed.setFooter("30초후 삭제됩니다.")
+            embed.setFooter(message.author.tag, message.author.displayAvatarURL())
             embed.setTimestamp();
-        message.channel.send(embed).then(message => {message.delete({ timeout: 30000, reason: 'delete' })})
+        message.channel.send(embed)
         console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /서버정보 사용 > ${gigi.name}`)
 		} else {
 	  let embed = new Discord.MessageEmbed()

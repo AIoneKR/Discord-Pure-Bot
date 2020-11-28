@@ -1,7 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const beautify = require("beautify");
 const fs = require("fs");
-const blacklists = require("../../Database/blacklist.json");
 const Discord = require("discord.js")
 const COR = "#a6ffed"
 const dotenv = require("dotenv")

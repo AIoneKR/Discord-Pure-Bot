@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const prefixes = JSON.parse(fs.readFileSync("./Database/prefixes.json", "utf8"));
-const blacklists = require("../../Database/blacklist.json");
 
 module.exports = {
     name: "밴",

@@ -13,10 +13,10 @@ module.exports = {
          .setColor(0x00AE40)
          .setAuthor("프로필을 불러옵니다!")
          .setTitle(`Name : ${user.tag}\nID : ${user.id}`)
-            .setImage(user.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
+            .setImage(user.displayAvatarURL({ size: 1024 }))
             .setTimestamp()
-            .setFooter("10초후 삭제됩니다.")
-            message.channel.send(embed).then(message => {message.delete({ timeout: 10000, reason: 'delete' })})
+            .setFooter(message.author.tag, message.author.displayAvatarURL())
+			message.channel.send(embed)
              console.log(`> ${message.guild.name} < | ${message.channel.name} | ${message.author.tag} (${message.author.id}) /프로필 사용 > ${user.tag}`)
 	}
 }
